@@ -5,8 +5,8 @@ warning('off', 'all');
 Anchors = [0, 0; 100, 0; 0, 100; 100, 100]; 
 [N_BS, ~] = size(Anchors);
 
-max_iter = 500;     % 绘图用的最大迭代数
-tol = 1e-6;         % 收敛容差
+max_iter = 500;    
+tol = 1e-6;         
 
 fprintf('=== Optimization Benchmark Started ===\n');
 fprintf('Anchors: %d, Area: 100x100m\n', N_BS);
@@ -51,7 +51,7 @@ MC_runs = 100;
 
 rmse_res = zeros(5, length(noise_levels));
 time_res = zeros(5, length(noise_levels));
-x_init_mc = [50; 50]; % 初始猜测固定在中心
+x_init_mc = [50; 50]; 
 
 for i = 1:length(noise_levels)
     sig = noise_levels(i);
@@ -294,4 +294,5 @@ function [x, info] = solve_lm(Anchors, d_m, x0, max_iter, tol)
         if norm(grad) < tol, break; end
     end
     info.loss = loss;
+
 end
